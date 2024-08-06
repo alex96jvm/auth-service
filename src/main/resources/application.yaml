@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/auth_db
+    username: postgres
+    password: 123
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+jwt:
+  secret-key: yoursecretkeyforjsonwebttokenforauthorization
+  expiration-in-hours: 1
