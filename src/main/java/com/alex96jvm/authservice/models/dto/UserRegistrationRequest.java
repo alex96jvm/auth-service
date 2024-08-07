@@ -3,6 +3,8 @@ package com.alex96jvm.authservice.models.dto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+import java.util.Objects;
+
 public class UserRegistrationRequest {
 
     @NotBlank(message = "Логин не может быть пустым")
@@ -26,5 +28,18 @@ public class UserRegistrationRequest {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserRegistrationRequest that = (UserRegistrationRequest) o;
+        return Objects.equals(login, that.login) && Objects.equals(password, that.password);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(login, password);
     }
 }

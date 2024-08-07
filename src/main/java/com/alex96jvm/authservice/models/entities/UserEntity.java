@@ -1,6 +1,8 @@
 package com.alex96jvm.authservice.models.entities;
 
 import jakarta.persistence.*;
+
+import java.util.Objects;
 import java.util.UUID;
 
 @Entity
@@ -47,4 +49,16 @@ public class UserEntity {
         this.role = role;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserEntity that = (UserEntity) o;
+        return Objects.equals(id, that.id) && Objects.equals(login, that.login) && Objects.equals(password, that.password) && Objects.equals(role, that.role);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, login, password, role);
+    }
 }
